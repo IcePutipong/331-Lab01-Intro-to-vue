@@ -12,6 +12,10 @@ createApp({
             '30% wool',
             '20% polyester'
         ])
+        const variants = ref ([
+            { id: 2234, color: ' green'},
+            { id: 2235, color: 'blue'}
+        ])
         const link = ref('https://www.camt.cmu.ac.th')
         return {
             product,
@@ -19,6 +23,7 @@ createApp({
             inStock,
             inventory,
             details,
+            variants,
             onSale,
             link
         }
