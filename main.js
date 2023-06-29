@@ -16,6 +16,10 @@ createApp({
             { id: 2234, color: ' green'},
             { id: 2235, color: 'blue'}
         ])
+        const cart = ref(0)
+        function addToCart(){
+            cart.value += 1
+        }
         const link = ref('https://www.camt.cmu.ac.th')
         return {
             product,
@@ -24,6 +28,8 @@ createApp({
             inventory,
             details,
             variants,
+            cart,
+            addToCart,
             onSale,
             link
         }
