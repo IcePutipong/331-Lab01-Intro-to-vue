@@ -3,8 +3,8 @@ const {createApp, ref, computed} = Vue
 createApp({
     setup(){
         const product = ref('Boots')
-        const image = ref('./assets/images/socks_green.jpg')
-        const inStock = ref(true)
+        // const image = ref('./assets/images/socks_green.jpg')
+        // const inStock = ref(true)
         const onSale = ref(false)
         const inventory = ref(100)
         const brand = ref('SE 331')
@@ -13,10 +13,30 @@ createApp({
             '30% wool',
             '20% polyester'
         ])
-        const variants = ref ([
-            { id: 2234, color: ' green', image: './assets/images/socks_green.jpg'},
-            { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg'}
+        const description = ref('description')
+        const sizes = ref([
+            'S', 
+            'M',
+            'L'
         ])
+        const variants = ref ([
+            { id: 2234, color: ' green', image: './assets/images/socks_green.jpg',quantity:50},
+            { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity:0}
+        ])
+         const selectedVariant = ref(0)
+
+         function updateVariant(index){
+            selectedVariant.value = index;
+         }
+
+         const image = computed(() => {
+            return variants.value[selectedVariant.value].image
+         })
+         const inStock = computed(() =>{
+            return variants.value[selectedVariant.value.quantity]
+         })
+
+
         const cart = ref(0)
         function addToCart(){
             cart.value += 1
@@ -29,10 +49,12 @@ createApp({
             image.value = variantImage
         }
         const link = ref('https://www.camt.cmu.ac.th')
-        
+
         return {
             title,
+            description,
             image,
+            sizes,
             inStock,
             inventory,
             details,
@@ -41,6 +63,7 @@ createApp({
             addToCart,
             updateImage,
             onSale,
+            updateVariant,
             link
         }
     }
