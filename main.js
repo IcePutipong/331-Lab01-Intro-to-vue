@@ -1,4 +1,4 @@
-const {createApp, ref } = Vue   
+const {createApp, ref, computed} = Vue   
 
 createApp({
     setup(){
@@ -21,13 +21,17 @@ createApp({
         function addToCart(){
             cart.value += 1
         }
+
+        const title = computed(() => {
+            return brand.value + ' ' + product.value
+        })
         function updateImage(variantImage){
             image.value = variantImage
         }
         const link = ref('https://www.camt.cmu.ac.th')
+        
         return {
-            product,
-            brand,
+            title,
             image,
             inStock,
             inventory,
