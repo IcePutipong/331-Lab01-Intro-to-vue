@@ -7,6 +7,7 @@ createApp({
         const inStock = ref(true)
         const onSale = ref(false)
         const inventory = ref(100)
+        const brand = ref('SE 331')
         const details = ref([
             '50% cotton',
             '30% wool',
@@ -26,6 +27,7 @@ createApp({
         const link = ref('https://www.camt.cmu.ac.th')
         return {
             product,
+            brand,
             image,
             inStock,
             inventory,
