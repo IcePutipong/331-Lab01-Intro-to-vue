@@ -55,7 +55,6 @@ createApp({
 
         function updateStock(){
             if(inStock.value === false) {
-                // inventory.value = 100;
                 variants.value[selectedVariant.value].quantity = 100
             
             }
