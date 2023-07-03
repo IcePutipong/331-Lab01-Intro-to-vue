@@ -43,6 +43,9 @@
             <button class="button" :disabled='!inStock' @click="addToCart" 
             :class="{disabledButton: !inStock}">
                 Add to Cart</button>
+
+            <button class="button" @click="updateStock">Update Stock</button>
+            
         </div>
  
     </div>

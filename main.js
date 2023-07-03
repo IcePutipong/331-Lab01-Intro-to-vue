@@ -6,7 +6,7 @@ createApp({
         // const image = ref('./assets/images/socks_green.jpg')
         // const inStock = ref(true)
         const onSale = ref(false)
-        const inventory = ref(100)
+        // const inventory = ref(100)
         const brand = ref('SE 331')
         const details = ref([
             '50% cotton',
@@ -33,11 +33,15 @@ createApp({
             return variants.value[selectedVariant.value].image
          })
          const inStock = computed(() =>{
-            return variants.value[selectedVariant.value.quantity]
+            return variants.value[selectedVariant.value].quantity > 0
+         })
+         const inventory = computed(() =>{
+            return variants.value[selectedVariant.value].quantity
          })
 
 
         const cart = ref(0)
+
         function addToCart(){
             cart.value += 1
         }
@@ -48,6 +52,19 @@ createApp({
         function updateImage(variantImage){
             image.value = variantImage
         }
+
+        function updateStock(){
+            if(inStock.value === false) {
+                // inventory.value = 100;
+                variants.value[selectedVariant.value].quantity = 100
+            
+            }
+            else{
+                variants.value[selectedVariant.value].quantity = 0
+            }
+        }
+
+
         const link = ref('https://www.camt.cmu.ac.th')
 
         return {
@@ -64,6 +81,7 @@ createApp({
             updateImage,
             onSale,
             updateVariant,
+            updateStock,
             link
         }
     }
