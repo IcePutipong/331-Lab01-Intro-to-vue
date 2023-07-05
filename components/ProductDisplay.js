@@ -30,12 +30,16 @@ const productDisplay = {
                      class="color-circle" :style="{backgroundColor: variant.color}">
 
             </div>
-            <button class="button" :disabled='!inStock' @click="addToCart" 
-            :class="{disableButton: !inStock}">
-                Add to Cart</button>
+            <div>
+                <button class="button" :disabled='!inStock' @click="addToCart" 
+                :class="{disableButton: !inStock}">
+                    Add to Cart</button>
 
-            <button class="button" @click="updateStock">Update Stock</button>
-            <button class="button" @:click="removeCart">Remove</button>
+                <button class="button" @click="updateStock">Update Stock</button>
+                <button class="button" @:click="removeCart">Remove</button>
+            </div>
+            <review-form></review-form>
+            
 
         </div>
         
