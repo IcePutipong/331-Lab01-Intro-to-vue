@@ -15,7 +15,6 @@
         <div class="nav-bar"></div>
         <div class="cart">Cart({{ cart}})</div>
         
-        <product-display :premium="true"></product-display>
         <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
     </div>
 
