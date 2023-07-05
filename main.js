@@ -7,10 +7,15 @@ const app = createApp({
         function updateCart(id){
             cart.value.push(id)
         }
+        function removeCart(id){
+            cart.value = []
+            console.log(cart.value)
+        }
         return {
             cart,
             premium,
-            updateCart
+            updateCart,
+            removeCart
         }
     }
 })

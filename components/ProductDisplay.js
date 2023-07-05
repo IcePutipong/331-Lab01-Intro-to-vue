@@ -36,6 +36,7 @@ const productDisplay = {
                 Add to Cart</button>
 
             <button class="button" @click="updateStock">Update Stock</button>
+            <button class="button" @:click="removeCart">Remove</button>
 
         </div>
         
@@ -46,7 +47,7 @@ const productDisplay = {
         premium: Boolean
     },
     setup(props, {emit}){
-        const shipping = computed(()=>{
+        const shipping = computed(() =>{
             if(props.premium){
                 return 'Free'
             }else{
@@ -97,6 +98,10 @@ const productDisplay = {
             emit('add-to-cart', variants.value[selectedVariant.value].id)
         }
 
+        function removeCart(){
+            emit('remove-from-cart', cart.value)
+        }
+
         const title = computed(() => {
             if(onSale.value === true){
                 return brand.value+ ' ' + product.value+ " Is on Sale!!"
@@ -131,6 +136,7 @@ const productDisplay = {
             variants,
             cart,
             addToCart,
+            removeCart,
             updateImage,
             onSale,
             updateVariant,
