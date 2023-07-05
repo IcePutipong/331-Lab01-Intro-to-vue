@@ -17,6 +17,10 @@ const reviewForm = {
         <option>2</option>
         <option>1</option>
     </select>
+    <br/>
+    <label>Would you recommend this product?</label>
+    <br/>
+    <input type="checkbox" id="rec" v-model = "form.rec"></input>
 
     <input class="button" type="submit" value="Submit">
     </form> `,
@@ -24,7 +28,9 @@ const reviewForm = {
         const form = reactive({
             name: '',
             review: '',
-            rating: null
+            rating: null,
+            rec: false
+
         })
         function onSubmit(){
             if(form.name === '' || form.review === '' || form.rating === null){
@@ -34,12 +40,16 @@ const reviewForm = {
             const productReview = {
                 name: form.name,
                 review: form.review,
-                rating: form.rating
+                rating: form.rating,
+                rec: form.rec
+                
             }
+            console.log(form);
             emit('review-submitted', productReview)
             form.name = ''
             form.review =''
             form.rating = null
+            form.rec = false
         }
         return{
             form,
