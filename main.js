@@ -7,7 +7,7 @@ const app = createApp({
         function updateCart(id){
             cart.value.push(id)
         }
-        function removeCart(id){
+        function removeCart(){
             cart.value = []
             console.log(cart.value)
         }

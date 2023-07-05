@@ -1,7 +1,6 @@
 const productDisplay = {
     template:
     `
-        <a href = "index.html"></a>
 
         <div class="product-display">
             <div class="product-container">
