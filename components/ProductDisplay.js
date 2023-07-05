@@ -38,9 +38,10 @@ const productDisplay = {
                 <button class="button" @click="updateStock">Update Stock</button>
                 <button class="button" @:click="removeCart">Remove</button>
             </div>
-            <review-form></review-form>
-            
 
+            <review-form @review-submitted = "addReview"></review-form>
+            <review-list :reviews = "reviews"></review-list>            
+    
         </div>
         
     
@@ -102,7 +103,7 @@ const productDisplay = {
         }
 
         function removeCart(){
-            emit('remove-from-cart', cart.value)
+            emit('remove-from-cart', variants.value[selectedVariant.value].id)
         }
 
         const title = computed(() => {
@@ -125,6 +126,12 @@ const productDisplay = {
             }
         }
 
+        const reviews = ref([])
+
+        function addReview(review){
+            reviews.value.push(review)
+        }
+
 
         const link = ref('https://www.camt.cmu.ac.th')
 
@@ -145,7 +152,9 @@ const productDisplay = {
             updateVariant,
             updateStock,
             link,
-            shipping
+            shipping,
+            reviews,
+            addReview
         }
     }
     
